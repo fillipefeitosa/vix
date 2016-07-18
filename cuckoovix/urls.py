@@ -14,14 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import patterns, include, url
-
+from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.static import static
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-   url(r'^$', 'vix.views.index', name='index'),
-   url(r'^admin/', include(admin.site.urls)),
-   url('', include('django.contrib.auth.urls', namespace='auth')),
-   url('', include('social.apps.django_app.urls', namespace='social')),
-
-)
+    url(r'^$', 'vix.views.index', name='index'),
+    url(r'^list/', 'vix.views.task_list', name='list'),
+    url(r'^admin/', include(admin.site.urls)),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^', include('vix.urls')),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

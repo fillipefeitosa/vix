@@ -2,7 +2,7 @@
 
 {% block main %}
  <div>
- <h1>Third-party authentication demo</h1>
+ <h1>Cuckoo Vix</h1>
 
  <p>
    <ul>
@@ -11,8 +11,33 @@
        <a>Hello {{ user.get_full_name|default:user.username }}!</a>
      </li>
      <li>
+         <a>Server Status: ON </a>
+     </li>
+     <li>
+         <a>hostname: {{ server_hostname }} </a>
+     </li>
+     <li>
+         <a>Version: {{ server_version }} </a>
+     </li>
+     <li>
+         <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.task_file.label_tag }} {{ form.task_file.help_text }}</p>
+            <p>
+                {{ form.task_file.errors }}
+                {{ form.task_file }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+     </li>
+     <li>
+       <a href="">My Submissions</a>
+     </li>
+     <li>
        <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
      </li>
+
    {% else %}
      <li>
        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>

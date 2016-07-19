@@ -20,6 +20,9 @@
          <a>Version: {{ server_version }} </a>
      </li>
      <li>
+         <a>Task_id: {{ task_id }}</a>
+     </li>
+     <li>
          <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
@@ -28,6 +31,7 @@
                 {{ form.task_file.errors }}
                 {{ form.task_file }}
             </p>
+            <p>{{ form.task_description.label }} {{ form.task_description }}</p>
             <p><input type="submit" value="Upload" /></p>
         </form>
      </li>

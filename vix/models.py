@@ -26,10 +26,8 @@ class Status(models.Model):
     """Status class to consume server Status."""
 
     def _get_data_status(attribute, attribute2=None):
-        """
-            Returns server status
-        """
-        resp = requests.get('http://192.168.1.9:8090/cuckoo/status')
+        """Returns server status."""
+        resp = requests.get('http://192.168.0.16:8090/cuckoo/status')
         resp_data = resp.json()
 
         if resp.status_code != 200:
@@ -51,7 +49,7 @@ class Connect_to_flask(models.Model):
     """
 
     def get_data_status(attribute):
-        resp = requests.get('http://192.168.1.9:8090/cuckoo/status')
+        resp = requests.get('http://192.168.0.16:8090/cuckoo/status')
         resp_data = resp.json()
 
         if resp.status_code != 200:

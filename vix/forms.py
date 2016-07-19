@@ -8,3 +8,9 @@ class SubmissionForm(forms.Form):
         label='Select a File',
         help_text='max. 42 Megabytes'
     )
+    task_description = forms.CharField(
+        label='Description:',
+        max_length=1000,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': '(optional)'})
+        )

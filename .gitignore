@@ -3,3 +3,4 @@ settings.py
 *.json
 *~
 media/
+db.sqlite3

@@ -1,11 +1,12 @@
 """Module with the views and helpers for cuckoo-vix pages."""
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
-from .models import Status
-import datetime
 
 from .models import Task
+from .models import Status
 from .forms import SubmissionForm
+
+import datetime
 import requests
 import json
 import shutil
@@ -31,7 +32,7 @@ def erase_temp_folder():
 
 def submit_file(task):
     """Method to submit file to rest API."""
-    REST_URL = "http://192.168.0.16:8090/tasks/create/file"
+    REST_URL = "http://192.168.100.106:8090/tasks/create/file"
     handle_uploaded_file(task)
     SAMPLE_FILE = 'media/temp/{}'.format(task)
     try:
@@ -112,11 +113,19 @@ def index(request):
 
 
 def task_list(request):
-    if request.user.is_authenticated():
-        return render_to_response('vix/list.html')
-    else:
-        return render_to_response('vix/index.html')
+    """List with all user tasks."""
+    tasks_from_user = Task.objects.all().filter(user=request.user)
+
+    return render_to_response(
+        'vix/list.html',
+        RequestContext(request, {
+            'request': request,
+            'tasks_from_user': tasks_from_user,
+        }))
 
 
-def task_new(request):
-    return true
+def about(request):
+    """about page to show details."""
+    return render_to_response(
+        'vix/about.html'
+    )

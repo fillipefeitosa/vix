@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vix',
     'social.apps.django_app.default',
+    'django_tables2',
+    'djfrontend',
+    'djfrontend.skeleton',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -74,6 +78,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
+                'django.core.context_processors.request',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -93,6 +99,7 @@ WSGI_APPLICATION = 'cuckoovix.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/'
 
 DATABASES = {
     'default': {
@@ -149,5 +156,11 @@ SOCIAL_AUTH_GOOGLE_PLUS_USE_DEPRECATED_API = True
 SOCIAL_AUTH_FACEBOOK_KEY = "295576334123703"
 SOCIAL_AUTH_FACEBOOK_SECRET = "a921a4c98efaa9a84a4d623c819ba6ad"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'static')
 MEDIA_URL = '/media/'
+
+API_URL = 'http://192.168.0.102/{}'
+API_URL_MALHEUR = API_URL.format('malheur/exists/{}')
+API_URL_STATUS = 'http://192.168.0.102:8090/cuckoo/status'
+API_URL_TASK_VIEW = 'http://192.168.0.102:8090/tasks/view/{}'
+API_URL_TASK_REPORT = 'http://192.168.0.102:8090/tasks/report/{}'

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{% static 'vix/style.css' %}" />
+<link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+
+
+<h1>About Vix</h1>
+    <p>VIX is small (and minimal too!) client for <a href="https://www.cuckoosandbox.org/">
+        Cuckoo</a> sandbox that uses <a href="http://www.mlsec.org/malheur/">Malheur</a>
+        to complement the sandbox analisys with Malware behavior.
+    </p>
+
+    <p>With VIX you can submit files, ex.: an e-mail atachment attachment,
+        and get a feedback to ensure if it is a safe file.
+    </p>
+</br>
+<h1>How VIX works?</h1>
+    <p>As a client, VIX organize things given by Cuckoo and Malheur. Using MIST
+        as pattern to malware behavior input, there is a Machine Learning process
+        to determine if a binary has a similar behavior compared with a know malware
+        from database. Each time a malware is submited, it adds knowledge to the database.
+        And, well, knowledge is power!
+    </p>
+    <p>There are two expected returns <b>if a file is somehow malicious:</b></p>
+        <ul align="justify">
+            <li >
+                <b>Signature:</b> VIX give you the MalScore(from Virustotal) and the
+                percentage of antivirus softwares that identified the file as malware.
+            </li>
+            <li>
+                <b>Behavior:</b> VIX give you the closest malware and the group (cluster)
+                that behave like the submmited file.
+            </li>
+        </ul>
+</br>
+<h1>Author</h1>
+    <p>The author Fillipe Feitosa (me!) is a Software Engineer from Universidade de Brasília,
+        Brazil. You can find him at:</br></br></p>
+        <span class="glyphicon glyphicon-user" aria-hidden="true"> Twitter: @fil_lip</span></br>
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true"> fillipefeitosa@gmail.com</span></br>
+</br>
+<h1>Contribute</h1>
+    <p>Soon...</p>
+</br>
+
+<div>
+    <a href="/" class="btn btn-lg btn-info" role="button">Back</a>
+</div>
+</br></br>
+
+{% endblock %}

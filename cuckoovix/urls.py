@@ -22,7 +22,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'vix.views.index', name='index'),
-    url(r'^list/', 'vix.views.task_list', name='list'),
     url(r'^admin/', include(admin.site.urls)),
     url('', include('django.contrib.auth.urls', namespace='auth')),
     url('', include('social.apps.django_app.urls', namespace='social')),

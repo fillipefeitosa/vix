@@ -1,8 +1,78 @@
 {% extends 'base.html' %}
-
 {% block main %}
 
-    <h1>Hello</h1>
+    <body>
+        <div class="container">
+            <h3>Finished Submissions</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Task Id</th>
+                    <th>Submission Date</th>
+                    <th>Description</th>
+                    <th>File</th>
+                    <th>Finished On</th>
+                    <th>Malscore</th>
+                    <th>MalFamily</th>
+                    <th>Standart Analisys</th>
+                    <th>Behavior Analisys</th>
+                </tr>
+                {% for task in tasks_from_user %}
+                    {% if task.is_finished %}
+                    <tr>
+                        <td>{{ task.task_id }}</td>
+                        <td>{{ task.task_submission_date }}</td>
+                        <td>{{ task.task_description }}</td>
+                        <td>{{ task.task_file }}</td>
+                        <td>{{ task.is_finished }}</td>
+                        <td>{{ task.get_malscore }}</td>
+                        <td>{{ task.get_malfamily }}</td>
+                        <td align="middle">{{ task.get_percent|floatformat:2 }}</td>
+                        {% if task.get_behavior_status %}
+                            <td align="middle">
+                                <button type="button" class="btn btn-default btn-md">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    <a  href="detail/">Details</a>
+                                </button>
+                            </td>
+                        {% else %}
+                            <td align="middle">
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                Not Available
+                            </td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="container">
+            <h3>Pending</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Task Id</th>
+                    <th>Submission Date</th>
+                    <th>Description</th>
+                    <th>File</th>
+                    <th>Status</th>
+                </tr>
+                {% for task in tasks_from_user %}
+                    {% if not task.is_finished %}
+                    <tr>
+                        <td>{{ task.task_id }}</td>
+                        <td>{{ task.task_submission_date }} </td>
+                        <td>{{ task.task_description }}</td>
+                        <td>{{ task.task_file }} </td>
+                        <td>Pending</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container">
+            <a href="/" class="btn btn-info" role="button">Back</a>
+        </div>
+    </body>
 
 
 {% endblock %}

@@ -6,7 +6,7 @@ import requests
 
 
 class Task(models.Model):
-    """Task generated to store data in localy."""
+    """Task generated to store data localy and identify users."""
 
     def user_directory_path(instance, filename):
         """File will be uploaded to MEDIA_ROOT/user_id/<filename> ."""
@@ -118,7 +118,7 @@ class Connect_to_flask(models.Model):
     """Class to make connections and retrieve data from flask restfull."""
 
     def get_data_status(attribute):
-        resp = requests.get('http://192.168.0.107:8090/cuckoo/status')
+        resp = requests.get('http://192.168.1.8:8090/cuckoo/status')
         resp_data = resp.json()
 
         if resp.status_code != 200:

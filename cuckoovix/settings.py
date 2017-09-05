@@ -146,6 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/fillipe/Documentos/vix/'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "56194306899-r0d4a55h724sq7mevp0rr69t0hap5h7n.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "79NwYiKpc0cvH-gLGWCRF_yh"
@@ -159,8 +160,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = "a921a4c98efaa9a84a4d623c819ba6ad"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'static')
 MEDIA_URL = '/media/'
 
-API_URL = 'http://192.168.0.102/{}'
+API_URL = 'http://192.168.1.8/{}'
 API_URL_MALHEUR = API_URL.format('malheur/exists/{}')
-API_URL_STATUS = 'http://192.168.0.102:8090/cuckoo/status'
-API_URL_TASK_VIEW = 'http://192.168.0.102:8090/tasks/view/{}'
-API_URL_TASK_REPORT = 'http://192.168.0.102:8090/tasks/report/{}'
+API_URL_STATUS = 'http://192.168.1.8:8090/cuckoo/status'
+API_URL_TASK_VIEW = 'http://192.168.1.8:8090/tasks/view/{}'
+API_URL_TASK_REPORT = 'http://192.168.1.8:8090/tasks/report/{}'

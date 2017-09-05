@@ -32,7 +32,7 @@ def erase_temp_folder():
 
 def submit_file(task):
     """Method to submit file to rest API."""
-    REST_URL = "http://192.168.100.106:8090/tasks/create/file"
+    REST_URL = "http://192.168.1.8:8090/tasks/create/file"
     handle_uploaded_file(task)
     SAMPLE_FILE = 'media/temp/{}'.format(task)
     try:
